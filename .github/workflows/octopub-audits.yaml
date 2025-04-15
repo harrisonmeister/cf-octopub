@@ -5,8 +5,8 @@ permissions:
 'on':
   workflow_dispatch: {}
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
     paths:
       - '**/*'
       - '!.github/badges/*'
@@ -30,17 +30,6 @@ jobs:
           github_actor: ${{ github.actor }}
           dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerhub_password: ${{ secrets.DOCKERHUB_TOKEN }}
-          octopus_url: ${{ secrets.DSC_OCTOPUS_URL }}
-          octopus_apikey: ${{ secrets.DSC_OCTOPUS_API }}
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           service_directory: audit-microservice
-
-      - name: Build Audits Helm Chart
-        uses: ./github/helm
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          chart_directory: octopub-audits-mysql
-          octopus_url: ${{ secrets.DSC_OCTOPUS_URL }}
-          octopus_apikey: ${{ secrets.DSC_OCTOPUS_API }}
+          github_codefresh_token: ${{ secrets.CF_GITHUB_TOKEN }}
+          codefresh_token: ${{ secrets.CF_USER_TOKEN }}
