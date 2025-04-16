@@ -22,8 +22,8 @@ jobs:
           run_number: ${{ github.run_number }}
           github_repo: ${{ github.repository }}
           github_token: ${{ github.token }}
-          dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
-          dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}
+          dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+          dockerhub_password: ${{ secrets.DOCKERHUB_TOKEN }}
           service_directory: products-microservice
           github_codefresh_token: ${{ secrets.CF_GITHUB_TOKEN }}
           codefresh_token: ${{ secrets.CF_USER_TOKEN }}
