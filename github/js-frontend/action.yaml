@@ -118,7 +118,7 @@ runs:
         CF_ISSUE_TRACKING_INTEGRATION: 'harrisonmeister-jira' 
 
         # # String starting with the issue ID to associate with image
-        CF_JIRA_MESSAGE: 'OC-*'
+        CF_JIRA_MESSAGE: 'OC-1'
 
         # # Jira project filter
         CF_JIRA_PROJECT_PREFIX: "OC"
