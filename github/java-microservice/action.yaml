@@ -177,7 +177,7 @@ runs:
         CF_GIT_BRANCH: ${{ github.ref_name }}
 
         # Image path to enrich 
-        CF_IMAGE: docker.io/${{ inputs.dockerhub_username }}/cf-octopub-${{ inputs.service_directory }}-mysql:${{ env.PACKAGE_VERSION }}
+        CF_IMAGE: docker.io/${{ inputs.dockerhub_username }}/cf-octopub-${{ inputs.service_directory }}:${{ env.PACKAGE_VERSION }}
 
         # GitHub Access token !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
         # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
