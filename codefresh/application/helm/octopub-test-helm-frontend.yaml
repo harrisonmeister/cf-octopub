@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: octopussamples-octopub-frontend-test
+  name: octopub-frontend-test
   annotations:
-    codefresh.io/product: octopussamples-octopub-frontend
+    codefresh.io/product: octopub-frontend
 spec:
   project: default
   source:

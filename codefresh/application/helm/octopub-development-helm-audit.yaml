@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: octopussamples-octopub-audit-development
+  name: octopub-audit-development
   annotations:
-    codefresh.io/product: octopussamples-octopub-audit
+    codefresh.io/product: octopub-audit
 spec:
   project: default
   source:
