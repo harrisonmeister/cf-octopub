@@ -18,10 +18,10 @@ customBackgroundColor: ""
 customPaperColor: ""
 
 image:
-  repository: octopussamples/octopub-frontend
+  repository: harrisonmeister/cf-octopub-frontend
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "20250411.417.1"
+  tag: "2025.06.16.5"
 
 network:
   port: 8080
