@@ -12,6 +12,8 @@ on:
       - '!.github/badges/*'
       - '!README.md'
       - '!python/**/*'
+  schedule:
+    - cron: '0 7 * * 1-5'
 
 jobs:
   build:

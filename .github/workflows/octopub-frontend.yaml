@@ -12,7 +12,8 @@ permissions:
       - '!.github/badges/*'
       - '!README.md'
       - '!python/**/*'
-
+  schedule:
+    - cron: '0 6 * * 1-5'
 jobs:
   build:
     runs-on: ubuntu-latest
