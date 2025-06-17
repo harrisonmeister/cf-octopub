@@ -165,7 +165,7 @@ runs:
     - name: report image by action
       with:
         # Name of runtime to implement the enrichment
-        CF_RUNTIME_NAME: 'codefresh-local'
+        CF_RUNTIME_NAME: 'local-k3s02'
 
         # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
         CF_API_KEY: ${{ inputs.codefresh_token }}
