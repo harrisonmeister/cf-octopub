@@ -18,9 +18,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Get commit message
+        id: commit-msg
+        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> "$GITHUB_OUTPUT"
 
       - name: Build JavaScript Frontend
         uses: ./github/js-frontend
@@ -32,3 +35,9 @@ jobs:
           dockerhub_password: ${{ secrets.DOCKERHUB_TOKEN }}
           github_token: ${{ github.token }}
           github_actor: ${{ github.actor }}
+          gitops_repo: ${{ secrets.GIT_GITOPS_REPO }}
+          gitops_repo_service_directory: octopub-frontend
+          gitops_repo_username: ${{ secrets.GIT_USER_NAME }}
+          gitops_repo_user_email: ${{ secrets.GIT_USER_EMAIL }}
+          gitops_repo_user_token: ${{ secrets.GIT_USER_TOKEN }}
+          gitops_commit_message: ${{ steps.commit-msg.outputs.COMMIT_MESSAGE}}

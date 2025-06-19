@@ -18,9 +18,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Get commit message
+        id: commit-msg
+        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> "$GITHUB_OUTPUT"
 
       - name: Build Audit Microservice
         uses: ./github/java-microservice
@@ -34,3 +37,9 @@ jobs:
           service_directory: audit-microservice
           github_codefresh_token: ${{ secrets.CF_GITHUB_TOKEN }}
           codefresh_token: ${{ secrets.CF_USER_TOKEN }}
+          gitops_repo: ${{ secrets.GIT_GITOPS_REPO }}
+          gitops_repo_service_directory: octopub-audits
+          gitops_repo_username: ${{ secrets.GIT_USER_NAME }}
+          gitops_repo_user_email: ${{ secrets.GIT_USER_EMAIL }}
+          gitops_repo_user_token: ${{ secrets.GIT_USER_TOKEN }}
+          gitops_commit_message: ${{ steps.commit-msg.outputs.COMMIT_MESSAGE}}
