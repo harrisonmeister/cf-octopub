@@ -195,5 +195,5 @@ runs:
         git config user.name "${{ inputs.gitops_repo_username }}"
         git config user.email "${{ inputs.gitops_repo_user_email }}"
         git add Chart.yaml values.yaml
-        git commit -m "Auto-Promotion: ${{ inputs.gitops_commit_messages}}"
+        git commit -m "Auto-Promotion: ${{ inputs.gitops_commit_message }}"
         git push origin main 

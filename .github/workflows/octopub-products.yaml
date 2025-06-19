@@ -18,8 +18,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      COMMIT_MESSAGE: ${{ steps.commit-msg.outputs.COMMIT_MESSAGE }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,7 +25,6 @@ jobs:
       - name: Get commit message
         id: commit-msg
         run: |
-          git log -1 --pretty=%B
           echo "COMMIT_MESSAGE<<EOF" >> "$GITHUB_OUTPUT"
           git log -1 --pretty=%B >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT" 
@@ -47,4 +44,4 @@ jobs:
           gitops_repo_username: ${{ secrets.GIT_USER_NAME }}
           gitops_repo_user_email: ${{ secrets.GIT_USER_EMAIL }}
           gitops_repo_user_token: ${{ secrets.GIT_USER_TOKEN }}
-          gitops_commit_message: ${{ steps.commit-msg.outputs.COMMIT_MESSAGE}}
+          gitops_commit_message: ${{ steps.commit-msg.outputs.COMMIT_MESSAGE }}
