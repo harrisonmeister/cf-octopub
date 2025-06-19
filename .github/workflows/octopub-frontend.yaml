@@ -25,7 +25,11 @@ jobs:
           fetch-depth: 0
       - name: Get commit message
         id: commit-msg
-        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> "$GITHUB_OUTPUT"
+        run: |
+          git log -1 --pretty=%B
+          echo "COMMIT_MESSAGE<<EOF" >> "$GITHUB_OUTPUT"
+          git log -1 --pretty=%B >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
       - name: Build JavaScript Frontend
         uses: ./github/js-frontend
