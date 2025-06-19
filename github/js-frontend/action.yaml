@@ -17,7 +17,7 @@ inputs:
     description: 'The github codefresh token'
     required: true
   gitops_repo:
-    description: 'The gitops repo
+    description: 'The gitops repo'
     required: true
   gitops_repo_service_directory:
     description: 'The directory holding the gitops application'
