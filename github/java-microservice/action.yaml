@@ -33,6 +33,9 @@ inputs:
   codefresh_token:
     description: 'The codefresh token'
     required: true
+  github_codefresh_token: 
+    description: 'The github codefresh token' 
+    required: true     
   gitops_repo:
     description: 'The gitops repo'
     required: true
