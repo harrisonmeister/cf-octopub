@@ -17,6 +17,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      COMMIT_MESSAGE: ${{ steps.commit-msg.outputs.COMMIT_MESSAGE }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,9 +31,7 @@ jobs:
         uses: ./github/java-microservice
         with:
           run_number: ${{ github.run_number }}
-          github_repo: ${{ github.repository }}
           github_token: ${{ github.token }}
-          github_actor: ${{ github.actor }}
           dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerhub_password: ${{ secrets.DOCKERHUB_TOKEN }}
           service_directory: audit-microservice

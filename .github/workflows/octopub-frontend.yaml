@@ -17,6 +17,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      COMMIT_MESSAGE: ${{ steps.commit-msg.outputs.COMMIT_MESSAGE }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,8 +35,6 @@ jobs:
           codefresh_token: ${{ secrets.CF_USER_TOKEN }}
           dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerhub_password: ${{ secrets.DOCKERHUB_TOKEN }}
-          github_token: ${{ github.token }}
-          github_actor: ${{ github.actor }}
           gitops_repo: ${{ secrets.GIT_GITOPS_REPO }}
           gitops_repo_service_directory: octopub-frontend
           gitops_repo_username: ${{ secrets.GIT_USER_NAME }}
