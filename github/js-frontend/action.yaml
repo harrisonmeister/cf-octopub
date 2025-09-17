@@ -137,7 +137,7 @@ runs:
       run: |
         cd gitops-repo/octopub/helm/${{ inputs.gitops_repo_service_directory }}/development
         yq e -i '.appVersion = "${{ env.PACKAGE_VERSION }}"' Chart.yaml
-        yq e -i '.images[0].newTag = "${{ env.PACKAGE_VERSION }}"' values.yaml
+        yq e -i '.image.tag = "${{ env.PACKAGE_VERSION }}"' values.yaml
 
     - name: Commit and push changes to GitOps repo
       shell: bash
