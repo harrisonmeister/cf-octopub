@@ -23,13 +23,7 @@ inputs:
   run_tests:
     description: 'Whether to run tests'
     required: true
-    default: true
-  codefresh_token:
-    description: 'The codefresh token'
-    required: true
-  github_codefresh_token: 
-    description: 'The github codefresh token' 
-    required: true     
+    default: true 
   gitops_repo:
     description: 'The gitops repo'
     required: true
@@ -157,20 +151,6 @@ runs:
         docker buildx build -f src/main/docker/Dockerfile.legacy-jar -t harrisonmeister/cf-octopub-${{ inputs.service_directory }}:${{ env.PACKAGE_VERSION }} -t harrisonmeister/cf-octopub-${{ inputs.service_directory }}:latest --platform=linux/amd64 --push .
       shell: bash
       working-directory: java/${{ inputs.service_directory }}
-
-    - name: report image by action
-      if: ${{ inputs.docker_build == 'true' }}
-      uses: codefresh-io/codefresh-report-image@latest
-      with:
-        CF_RUNTIME_NAME: 'local-k3s02'
-        CF_API_KEY: ${{ inputs.codefresh_token }}
-        CF_CONTAINER_REGISTRY_INTEGRATION: 'harrisonmeister-dockerhub'
-        CF_GIT_BRANCH: ${{ github.ref_name }}
-        CF_IMAGE: docker.io/${{ inputs.dockerhub_username }}/cf-octopub-${{ inputs.service_directory }}:${{ env.PACKAGE_VERSION }}
-        CF_GITHUB_TOKEN: ${{ inputs.github_codefresh_token }}    
-        CF_ISSUE_TRACKING_INTEGRATION: 'harrisonmeister-jira' 
-        CF_JIRA_MESSAGE: 'OC-1'
-        CF_JIRA_PROJECT_PREFIX: "OC"
       
     - name: Clone GitOps repo
       uses: actions/checkout@v4
